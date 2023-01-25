@@ -7,7 +7,7 @@ void free_matrix(int** m){
     }
     m=NULL;
 }
-void covert_to_rgb(char *rgb_matrix,int** matrix,char * static_mat_rgb){//[SNAPSHOT_HEIGHT][SNAPSHOT_WIDTH] [SNAPSHOT_HEIGHT][SNAPSHOT_WIDTH]
+void covert_to_rgb(char *rgb_matrix,int** matrix,char * static_mat_rgb){
     int k=0;
     for(int i=0;i<SNAPSHOT_HEIGHT;i++)
         for(int j=0;j<SNAPSHOT_WIDTH;j++)
@@ -36,8 +36,6 @@ Node  * rgb_converter(void * my_arg,Node * node)
         covert_to_rgb(rgb_matrix,(int**)node->data,rgb_t->static_rgb_matrix);
         *rgb_matrix=0;
         free_matrix((int**)node->data);
-        // freeNode(node);
-        //need to get argument status in order to now if to snapshot and get the static mat
         if((*(rgb_t->status))&(rgb_t->snapshot_active_bit))
         {
             save_snapshot(rgb_matrix);

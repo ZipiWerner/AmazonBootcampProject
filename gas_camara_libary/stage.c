@@ -23,7 +23,6 @@ void * main_satge(void * arg)
         n= my_stage->func(my_stage->my_arg,n);
         if((my_stage->destQu))
             enqueu(my_stage->destQu,n);
-        //the capture need to sleep
         if(!my_stage->sourseQu)
               usleep(WAIT);
     }while(n->data);
